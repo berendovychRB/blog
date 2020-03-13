@@ -1,0 +1,139 @@
+html,
+body {
+	font-family: FreeMono, monospace;
+	height: 100%;
+	background: url("/css/images/body.jpg") no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+}
+
+.head {
+	background: url("/css/images/head.jpg");
+	opacity: 0.2;
+	height: 120px;
+}
+
+.head div {
+	margin-left: 30px;
+}
+
+img {
+	width: 250px;
+	padding-left: 30px;
+	position: relative;
+	left: 20%;
+	-moz-user-select: none;
+	-webkit-user-select: none; 
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.read {
+	position: relative;
+	top: 16px;
+}
+
+.register {
+	border-radius: 3%;
+	height: 400px;
+	width: 470px;
+	position: absolute;
+	top: 160px;
+	right: 32%;
+}
+
+footer {
+	background: url("/css/images/head.jpg");
+	opacity: 0.7;
+	height: 100px;
+	width: auto;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.loginLine {
+	border-radius: 3%;
+	height: 400px;
+	width: 470px;
+	position: absolute;
+	top: 160px;
+	right: 32%;
+}
+
+input {
+	border: none;
+	background-color: transparent;
+	height: 35px;
+	width: 300px;
+	outline: none;
+	padding-left: 10px;
+	padding-bottom: 10px
+}
+
+input:focus {
+	border-bottom: 1px solid #fab450;
+}
+
+.pass label,
+.login label {
+	border-bottom: 1px solid black;
+}
+
+.login {
+	position: absolute;
+	left: 85;
+	top: 80px;
+}
+
+.pass {
+	position: absolute;
+	left: 85px;
+	top: 150px;
+}
+
+.rememberMe {
+	padding-top: 240px;
+}
+
+input[type=checkbox] {
+	height: 17px;
+	position: absolute;
+	left: 26px;
+}
+
+.rememberMe label {
+	position: absolute;
+	left: 190px;
+	font-size: 13px;
+}
+
+button[type=submit] {
+	border: none;
+	width: 100px;
+	color: white;
+	background: #4dd154;
+	position: absolute;
+	left: 185px;
+	top: 270px;
+}
+
+.forgetPassword {
+	color: #fab450;
+	border-bottom: 1px solid #fab450;
+	position: absolute;
+	font-size: 14px;
+	left: 184px;
+	top: 305px;
+}
+
+.forgetPassword:hover {
+	color: #c2852f;
+	text-decoration: none;
+}
+.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
