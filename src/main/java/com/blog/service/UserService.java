@@ -10,7 +10,6 @@ public interface UserService {
 
     User registration(UserDto userDto);
 
-    User getOne(Long id);
-
+    User getOne();
 
 }

@@ -1,7 +1,6 @@
 package com.blog.service.impl;
 
 import com.blog.dto.UserDto;
-import com.blog.entity.Post;
 import com.blog.entity.Role;
 import com.blog.entity.User;
 import com.blog.repository.UserRepository;
@@ -10,6 +9,7 @@ import com.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -37,11 +37,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User registration(UserDto userDto) {
-        if(!registrationValidation(userDto)) throw new AccessDeniedException("Bad Data");
+        if (!registrationValidation(userDto)) throw new AccessDeniedException("Bad Data");
         User user = new User();
         user.setNickName(userDto.getLogin());
         user.setPassword(encoder.encode(userDto.getPassword()));
-        if(userDto.getLogin().equals("admin")) user.setRole(Role.ADMIN);
+        if (userDto.getLogin().equals("admin")) user.setRole(Role.ADMIN);
         else user.setRole(Role.USER);
         user.setFirstName(userDto.getFirstName());
         user.setSecondName(userDto.getSecondName());
@@ -50,14 +50,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return save(user);
     }
 
-    @Override
-    public User getOne(Long id) { return repository.getOne(id); }
+
 
 
     public Boolean registrationValidation(UserDto userDto) {
         if (!userDto.getEmail().contains("@")) return false;
         if (!userDto.getPassword().equals(userDto.getPasswordRepeat())) return false;
-       // if (userDto.getPhone().length() != 10) return false;
+        // if (userDto.getPhone().length() != 10) return false;
         if (repository.countByEmail(userDto.getEmail()) > 0) return false;
         if (repository.countByNickName(userDto.getLogin()) > 0) return false;
         if (repository.countByPhone(userDto.getPhone()) > 0) return false;
@@ -76,4 +75,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 simpleGrantedAuthorities
         );
     }
+
+    public String getUserName() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+        return username;
+    }
+
+    @Override
+    public User getOne() {
+        return repository.findByNickName(getUserName());
+    }
+
 }
