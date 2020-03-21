@@ -30,7 +30,7 @@
                         <path d="M21 21l-5.2-5.2"></path>
                     </svg>
                 </a>
-                <sec:authorize access="!isAuthenticated()">
+                <sec:authorize access="isAuthenticated()">
                     <a class="btn btn-sm btn-outline-secondary mr-2" href="#">Увійти</a>
                     <a class="btn btn-sm btn-outline-secondary" href="/registration">Зареєструватись</a>
                 </sec:authorize>
@@ -52,12 +52,9 @@
         </nav>
     </div>
 
-    <main role="main" class="inner cover">
-        <h1 class="cover-heading">Hello ADMIN</h1>
-        <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">Start 3-th WorldWar</a>
-        </p>
-    </main>
+    <div class="container mt-5">
+        <h3>Інформація про нас:</h3>
+    </div>
 
     <footer class="text-muted">
         <div class="container">

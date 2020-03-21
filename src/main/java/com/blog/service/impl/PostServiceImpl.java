@@ -51,8 +51,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void addPost(String text) {
-        Post post = new Post(text);
+    public void addPost(String text, User user) {
+        Post post = new Post(text, user);
         save(post);
     }
 

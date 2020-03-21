@@ -8,7 +8,7 @@ public interface UserService {
 
     User save(User user);
 
-    User registrarion(UserDto userDto);
+    User registration(UserDto userDto);
 
     User getOne(Long id);
 

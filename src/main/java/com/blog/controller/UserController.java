@@ -15,8 +15,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserServiceImpl serviceImpl;
 
     @ModelAttribute("user")
     public UserDto getModel() {
@@ -35,11 +33,8 @@ public class UserController {
 
     @PostMapping("/registration")
     public String registration(@ModelAttribute("user") UserDto userDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "registration";
-        if (serviceImpl.registrationValidation(userDto)) {
-            userService.registrarion(userDto);
-            return "redirect:/login";
-        }
-        else return "redirect:/registrarion";
+        if (bindingResult.hasErrors())return "registration";
+        userService.registration(userDto);
+        return "redirect:/login";
     }
 }

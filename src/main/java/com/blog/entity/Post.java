@@ -16,9 +16,12 @@ public class Post {
 
     private String text;
 
+    @JoinColumn(name = "title")
+    private String title;
+
     private Date dateTime;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
@@ -27,7 +30,13 @@ public class Post {
     public Post() {
     }
 
-    public Post(String text) {
+    public Post(String title, String text) {
+        this.text = text;
+        this.title = title;
+    }
+
+    public Post(String text, User user){
+        this.user = user;
         this.text = text;
     }
 }

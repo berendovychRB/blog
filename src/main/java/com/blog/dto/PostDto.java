@@ -14,12 +14,19 @@ public class PostDto {
 
     private Date dateTime;
 
+    private String title;
+
     public PostDto() {
     }
 
     public PostDto(String text, Date dateTime) {
         this.text = text;
         this.dateTime = dateTime;
+    }
+
+    public PostDto(String text, String title) {
+        this.text = text;
+        this.title = title;
     }
 
     public PostDto(Post post) {

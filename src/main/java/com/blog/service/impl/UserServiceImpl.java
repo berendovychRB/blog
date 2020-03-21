@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User registrarion(UserDto userDto) {
+    public User registration(UserDto userDto) {
         if(!registrationValidation(userDto)) throw new AccessDeniedException("Bad Data");
         User user = new User();
         user.setNickName(userDto.getLogin());

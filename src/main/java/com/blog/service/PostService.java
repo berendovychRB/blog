@@ -2,6 +2,7 @@ package com.blog.service;
 
 import com.blog.dto.PostDto;
 import com.blog.entity.Post;
+import com.blog.entity.User;
 
 import java.util.List;
 
@@ -17,6 +18,6 @@ public interface PostService {
 
     List<PostDto> postToDto(List<Post> posts);
 
-    void addPost(String text);
+    void addPost(String text, User user);
 
 }
