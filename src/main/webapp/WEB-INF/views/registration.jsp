@@ -19,7 +19,7 @@
             <form:form class="form-horizontal" modelAttribute="user"
                        action="/registration" method="POST">
                 <div class="form-group">
-                    <label for="name" class="control-label col-sm-2">Full name:</label>
+                    <label for="login" class="control-label col-sm-2">Full name:</label>
                     <div class="col-sm-10">
                         <form:input type="text" path="login" id="login" class="form-control" />
                     </div>
@@ -34,6 +34,18 @@
                     <label for="phone" class="control-label col-sm-2">Phone:</label>
                     <div class="col-sm-10">
                         <form:input type="text" path="phone" id="phone" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="control-label col-sm-2">FirstName:</label>
+                    <div class="col-sm-10">
+                        <form:input type="text" path="firstName" id="firstName" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="secondName" class="control-label col-sm-2">SecondName:</label>
+                    <div class="col-sm-10">
+                        <form:input type="text" path="secondName" id="secondName" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">

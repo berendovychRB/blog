@@ -27,6 +27,11 @@ public class Post {
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
     private List<Comment> comments;
 
+    @JoinColumn(name = "liked")
+    @ManyToMany
+    private List<User> liked;
+
+
     public Post() {
     }
 
@@ -35,8 +40,20 @@ public class Post {
         this.title = title;
     }
 
+    public Post(String title, String text, Date dateTime) {
+        this.text = text;
+        this.title = title;
+        this.dateTime = dateTime;
+    }
+
+
     public Post(String text, User user){
         this.user = user;
         this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "" + dateTime + "";
     }
 }

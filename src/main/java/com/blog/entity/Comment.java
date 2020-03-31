@@ -23,4 +23,12 @@ public class Comment {
     @ManyToOne
     private Post post;
 
+    public Comment() {
+    }
+
+    public Comment(String text, Date dateTime) {
+        this.text = text;
+        this.dateTime = dateTime;
+    }
+
 }

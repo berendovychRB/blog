@@ -1,15 +1,16 @@
 package com.blog.repository;
 
+import com.blog.entity.Post;
 import com.blog.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByNickName(String nickName);
-
-    User findByNickName(User user);
 
     Integer countByNickName(String nickName);
 
@@ -17,6 +18,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Integer countByPhone(String phone);
 
-
-
+    Long countUsersByPosts(Iterable<Post> posts);
 }

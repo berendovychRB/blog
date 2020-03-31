@@ -26,6 +26,9 @@ public class User {
 
     private String password;
 
+    @JoinColumn
+    private String photoUrl;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -34,5 +37,21 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments;
+
+    @ManyToMany(mappedBy = "liked", cascade = CascadeType.ALL)
+    private List<Post> likedPosts;
+
+    public User() {
+    }
+
+    public User(String nickName) {
+        this.nickName = nickName;
+    }
+
+    @Override
+    public String toString() {
+        return "" + firstName + " " + secondName + "";
+    }
+
 
 }

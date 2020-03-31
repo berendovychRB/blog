@@ -1,12 +1,14 @@
 package com.blog.service.impl;
 
 import com.blog.dto.UserDto;
+import com.blog.entity.Post;
 import com.blog.entity.Role;
 import com.blog.entity.User;
 import com.blog.repository.UserRepository;
 import com.blog.service.PostService;
 import com.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,11 +17,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Service("userDetailsService")
 public class UserServiceImpl implements UserService, UserDetailsService {
+
+    @Value("${file.path}")
+    private String path;
 
     @Autowired
     private UserRepository repository;
@@ -50,7 +60,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return save(user);
     }
 
-
+    @Override
+    public List<User> getAll() {
+        return repository.findAll();
+    }
 
 
     public Boolean registrationValidation(UserDto userDto) {
@@ -83,8 +96,34 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getOne() {
+    public User getCurrentUser() {
         return repository.findByNickName(getUserName());
     }
+
+    @Override
+    public User getOne(Long id) {
+        return repository.getOne(id);
+    }
+
+    @Override
+    public User getByNickName(String nickName) {
+        return repository.findByNickName(nickName);
+    }
+
+    @Override
+    public void editUser(User user,MultipartFile file) {
+        if(file != null && !file.isEmpty()) {
+            String extention = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+            String fileName = UUID.randomUUID().toString()+extention;
+            try {
+                file.transferTo(new File(path+fileName));
+                user.setPhotoUrl(fileName);
+            } catch (IllegalStateException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+        save(user);
+    }
+
 
 }

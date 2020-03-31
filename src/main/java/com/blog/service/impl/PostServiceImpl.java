@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -42,6 +43,22 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<User> addUserToList(Post post) {
+        List<User> users = post.getLiked();
+        User user = service.getCurrentUser();
+        if(users.contains(user)){
+            users.remove(user);
+            service.save(user);
+            user.getLikedPosts().add(post);
+        }else{
+            users.add(user);
+            service.save(user);
+            user.getLikedPosts().add(post);
+        }
+        return users;
+    }
+
+    @Override
     public List<PostDto> postToDto(List<Post> posts) {
         List<PostDto> postDtos = new ArrayList<>();
         for(Post post: posts){
@@ -55,6 +72,5 @@ public class PostServiceImpl implements PostService {
         Post post = new Post(text, user);
         save(post);
     }
-
 
 }

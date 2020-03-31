@@ -1,5 +1,6 @@
 package com.blog.dto;
 
+import com.blog.entity.User;
 import lombok.Data;
 
 @Data
@@ -13,6 +14,7 @@ public class UserDto {
     private String passwordRepeat;
     private String phone;
     private String email;
+    private String photoUrl;
 
     public UserDto() {
     }
@@ -31,5 +33,16 @@ public class UserDto {
         this.passwordRepeat = passwordRepeat;
         this.phone = phone;
         this.email = email;
+    }
+
+    public UserDto(User user) {
+        this.id = user.getId();
+        this.login = user.getNickName();
+        this.firstName = user.getFirstName();
+        this.secondName = user.getSecondName();
+        this.password = user.getPassword();
+        this.phone = user.getPhone();
+        this.email = user.getEmail();
+        this.photoUrl = user.getPhotoUrl();
     }
 }

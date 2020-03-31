@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
@@ -26,7 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/","/other-resources/")
@@ -34,11 +36,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
     }
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
 
 
 }

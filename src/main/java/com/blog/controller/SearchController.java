@@ -1,9 +1,6 @@
 package com.blog.controller;
 
-import com.blog.entity.Post;
 import com.blog.entity.User;
-import com.blog.repository.PostRepository;
-import com.blog.service.PostService;
 import com.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,29 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
-
 @Controller
-public class MainPageController {
-
-    @Autowired
-    private PostService service;
-
-    @Autowired
-    private PostRepository repository;
+public class SearchController {
 
     @Autowired
     private UserService userService;
 
-
-    @GetMapping("/about")
-    public String about(Model model) {
-        User user = userService.getCurrentUser();
-        model.addAttribute("user", user);
-        return "about";
+    @GetMapping("/search")
+    public String search(Model model){
+        return "search";
     }
 
-
-
-
+    //Пошук постів за ніком юзера
+    @PostMapping("/search")
+    public String searchUser(@RequestParam String nickName, Model model){
+        User user = userService.getByNickName(nickName);
+        return "redirect:/page/" + user.getId();
+    }
 }

@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
+    List<Comment> getAllByUserId(Long id);
 
-    Comment findByDateTime(Date dateTime);
-
+    List<Comment> getAllByPostId(Long id);
 }

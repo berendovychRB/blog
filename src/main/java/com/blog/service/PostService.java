@@ -16,6 +16,8 @@ public interface PostService {
 
     List<Post> getAllByUserId(Long id);
 
+    List<User> addUserToList(Post post);
+
     List<PostDto> postToDto(List<Post> posts);
 
     void addPost(String text, User user);
