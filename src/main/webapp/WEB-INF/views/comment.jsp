@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../resources/css1/home.css">
+    <link rel="shortcut icon" href="../../resources/images/icons/favicon.ico" type="image/x-icon">
     <title>Головна сторінка |Блог не блогера</title>
     <style>
         <%--<%@include file="../../resources/home.css"%>--%>

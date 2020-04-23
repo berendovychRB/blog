@@ -7,7 +7,42 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../resources/css1/home.css">
-    <title>${user.firstName} ${user.secondName} |Блог не блогера</title>
+    <link rel="shortcut icon" href="../../resources/images/icons/favicon.ico" type="image/x-icon">
+    <title>Редагування |Блог не блогера</title>
+    <style>
+        .inp{
+            display: block;
+            margin: 0 auto;
+            width: 450px;
+            height: 30px;
+            border: 2px solid #3ca9fc;
+            outline: none;
+            border-radius: 50px;
+            padding-left: 40px;
+            font-size: 17px;
+        }
+        .inputfile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+        label{
+            position: relative;
+            left: 25px;
+            background-color: #3ca9fc;
+            border-radius: 8px;
+            color: white;
+        }
+        label:hover{
+            cursor: pointer;
+            background-color: #fa6342;
+            color: white;
+        }
+
+    </style>
 </head>
 <body class="unselectable">
 
@@ -17,10 +52,16 @@
     <div class="blocks">
         <form:form action="/editProfile" method="post" enctype="multipart/form-data">
 
-            <label for="image">Select image</label>
-            <input name="image" id="image" type="file">
+            <br>
+            <input type="text" name="firstName" class="inp" placeholder="Змінити Ім'я"/>
+            <br>
+            <input type="text" name="secondName" class="inp" placeholder="Змінити Прізвище"/>
+            <br>
 
-            <button type="submit" class="topost">Edit</button>
+            <label for="image">Загрузити аватарку</label>
+            <input name="image" id="image" class="inputfile" type="file">
+
+            <button type="submit" class="topost focusOff activeButton">Редагувати</button>
 
         </form:form>
     </div>

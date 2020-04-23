@@ -7,6 +7,7 @@
     <title>Про нас |Блог не блогера</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="../../resources/css1/home.css">
+    <link rel="shortcut icon" href="../../resources/images/icons/favicon.ico" type="image/x-icon">
     <style>
         p:hover{
             transform: scale(1.3);

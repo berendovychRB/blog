@@ -73,4 +73,9 @@ public class PostServiceImpl implements PostService {
         save(post);
     }
 
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
 }

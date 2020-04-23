@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class PostController {
         model.addAttribute("user", user);
         model.addAttribute("users", users);
         Iterable<Post> posts = service.getAll();
+        Collections.reverse((List<Post>) posts);
         model.addAttribute("posts", posts);
         return "home";
     }
@@ -40,67 +43,24 @@ public class PostController {
     @PostMapping("/")
     public String postToAdd(@RequestParam String title,
                             @RequestParam String text,
-                            Model model)
-    {
+                            Model model) {
         Date time = new Date();
-        if(!text.equals("")) {
+        if (!text.equals("")) {
             Post post = new Post(title, text, time);
             post.setUser(userService.getCurrentUser());
             service.save(post);
-        }else {
+        } else {
             System.out.println("error");
         }
         return "redirect:/";
     }
 
     @PostMapping("/likes/{id}")
-    public String likes(@PathVariable(name = "id")Long id,Model model){
+    public String likes(@PathVariable(name = "id") Long id, Model model) {
         Post post = service.getOne(id);
         post.setLiked(service.addUserToList(post));
         return "redirect:/";
     }
-/*
 
-
-===========================================
-Ееее ти сюда не хаді ти в "MainPageController"
-хаді,там добавляння постів
-===========================================
-
-
-    @GetMapping("/blog")
-    public String blogMain(Model model){
-        Iterable<Post> posts = service.getAll();
-        model.addAttribute("posts", posts);
-        return "blogMain";
-    }
-
-
-    //Пошук постів за айді юзера
-    @GetMapping("/blog/{id}")
-    public String blogMain(@PathVariable(name = "id") Long id, Model model){
-        Iterable<Post> posts = service.getAllByUserId(id);
-        model.addAttribute("posts", posts);
-        return "blogMain";
-    }
-
-
-    @GetMapping("/blog/add")
-    public String postAdd(Model model){
-        return "postAdd";
-    }
-
-    @PostMapping("/blog/add")
-    public String postToAdd(@RequestParam String title,
-                            @RequestParam String text,
-                            Model model)
-    {
-        Date time = new Date();
-        Post post = new Post(title, text, time);
-        post.setUser(userService.getCurrentUser());
-        service.save(post);
-        return "redirect:/blog";
-    }
-*/
 }
 

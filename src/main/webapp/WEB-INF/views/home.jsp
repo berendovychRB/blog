@@ -5,10 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../resources/css1/home.css">
+    <link rel="shortcut icon" href="../../resources/images/icons/favicon.ico" type="image/x-icon">
     <title>Головна сторінка |Блог не блогера</title>
-    <style>
-
-    </style>
 </head>
 
 <body class="unselectable">
@@ -55,13 +53,14 @@
                             <h5 class="postTitle postTitle2">${posts.title}</h5>
                             <p class="postText">${posts.text}</p>
                             <p style="margin-left: 415px;font-size: 12px;color: #828282;">${posts.dateTime}</p>
+
                         </div>
                         <div>
 
                             <form:form action="/likes/${posts.id}" cssStyle="width: 25px;margin-left: 20px;"
                                        method="post">
                                 <button class="like focus focusOff" style="margin-left: -17px;margin-top: 7px;}">
-                                    <img src="../../resources/images/icons/heart.png" class="like" alt="">
+                                   <img src="../../resources/images/icons/heart.png" class="like" alt="">
                                 </button>
                             </form:form>
                             <div style="width: 40px;position: relative;left: 45px;top: -29px;">

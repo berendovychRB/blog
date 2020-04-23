@@ -1,52 +1,45 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-    <title>Login</title>
+    <meta charset="UTF-8" content="text/css">
+    <link rel="stylesheet" href="../../resources/css1/loginAndRegister.css"/>
+    <link rel="shortcut icon" href="../../resources/images/icons/favicon.ico" type="image/x-icon">
+    <title>Вхід |Блог не блогера</title>
+
 </head>
+
 <body>
-<div class="container">
-
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <form:form class="form-horizontal" action="/login" method="POST">
-                <div class="form-group">
-                    <label for="name" class="control-label col-sm-2">Email or phone:</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="login" id="name" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="control-label col-sm-2">Password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" name="password" id="password" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="rememberMe"/> Remember me</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-10 col-sm-offset-2">
-                        <a href="/mainpage">
-                        <button class="btn btn-success" type="submit">Sing in</button>
-                        </a>
-                    </div>
-                </div>
-            </form:form>
-            <a href="/registration"> registration</a>
-
+<div class="info">
+    <img class="logo" src="../../resources/images/logo.png" alt="">
+    <h3>Вітаємо Вас на "Блог не Блогера"</h3>
+    <p>"Блог не Блогера" - це соціальна павутина для користувачів,які готові спілкуватись,ділитись та надихати.Тут ти можеш опубліковувати свої новини,або читати,що цікавого у інших користувачів.</p>
+    <p>О тож заходь поскоріше,та насолоджуйся.</p>
+</div>
+<div class="login">
+    <div class="in">Вхід</div>
+    <div>
+        <form:form action="/login" method="post">
+        <label for="login"></label>
+        <input type="text" name="login" id="login" placeholder="Логін">
+        <div class="pass">
+            <label for="password"></label>
+            <input type="password" name="password" id=password placeholder="Пароль">
+        </div>
+        <div>
+            <input type="checkbox" id="remember">
+            <label for="remember" class="rem">Запам'ятати мене</label>
+        </div>
+        <div>
+            <button type="submit">Увійти</button>
+            <a href="#">Забули пароль?</a>
+        </div>
+        </form:form>
+        <p class="p">Досі немає облікового запису?</p>
+        <div class="link">
+            <a href="/registration">Зареєструватись зараз</a>
         </div>
     </div>
 </div>
-</body>
-</html>
+</body></html>

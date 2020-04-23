@@ -1,8 +1,14 @@
 package com.blog.entity;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -52,6 +58,8 @@ public class User {
     public String toString() {
         return "" + firstName + " " + secondName + "";
     }
+
+
 
 
 }

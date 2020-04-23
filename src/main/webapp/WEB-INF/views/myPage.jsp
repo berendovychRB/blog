@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../resources/css1/home.css">
+    <link rel="shortcut icon" href="../../resources/images/icons/favicon.ico" type="image/x-icon">
     <title>${user.firstName} ${user.secondName} |Блог не блогера</title>
 </head>
 <body class="unselectable">
@@ -24,6 +26,11 @@
             <a href="/editProfile">
             <button class="addToFriends activeButton focusOff">Редагувати профіль</button>
             </a>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <a href="/admin">
+                <button class="addToFriends activeButton focusOff">Керування</button>
+            </a>
+            </sec:authorize>
             <!--
         <div class="tagsMenu">
             <div class="n">
@@ -45,7 +52,7 @@
         </div>
     </div>
 
-    <div class="blocks" style="margin-top: -60px">
+    <div class="blocks" style="margin-top: -62px">
         <div class="title">
             <b>
                 Створити пост

@@ -3,7 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="../../../resources/css/home.css">
-
 <header>
     <div class="unscroll">
         <img src="../../resources/images/logo.png" class="logo focus" alt="Логотип">

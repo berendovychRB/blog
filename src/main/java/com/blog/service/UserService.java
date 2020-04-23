@@ -24,5 +24,10 @@ public interface UserService {
 
     void editUser(User user,MultipartFile file);
 
+    void delete(Long id);
+
+    User giveAdmin(Long id);
+
+    User giveUser(Long id);
 
 }

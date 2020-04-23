@@ -1,7 +1,6 @@
 package com.blog.service.impl;
 
 import com.blog.dto.UserDto;
-import com.blog.entity.Post;
 import com.blog.entity.Role;
 import com.blog.entity.User;
 import com.blog.repository.UserRepository;
@@ -57,6 +56,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setSecondName(userDto.getSecondName());
         user.setEmail(userDto.getEmail());
         user.setPhone(userDto.getPhone());
+        user.setPhotoUrl("6a4ca816-5109-43aa-9d46-066b6c781754.png");
         return save(user);
     }
 
@@ -125,5 +125,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         save(user);
     }
 
+    @Override
+    public void delete(Long id) {
+       repository.deleteById(id);
+    }
+
+    @Override
+    public User giveAdmin(Long id) {
+        User user = getOne(id);
+        user.setRole(Role.ADMIN);
+        return save(user);
+    }
+
+    @Override
+    public User giveUser(Long id) {
+        User user = getOne(id);
+        user.setRole(Role.USER);
+        return save(user);
+    }
 
 }
