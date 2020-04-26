@@ -42,6 +42,8 @@ public class PostServiceImpl implements PostService {
             return repository.getAllByUserId(id);
     }
 
+
+
     @Override
     public List<User> addUserToList(Post post) {
         List<User> users = post.getLiked();
@@ -77,5 +79,11 @@ public class PostServiceImpl implements PostService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Post edit(Post post) {
+        return null;
+    }
+
 
 }

@@ -23,4 +23,9 @@ public interface PostService {
     void addPost(String text, User user);
 
     void delete(Long id);
+
+    Post edit(Post post);
+
+
+
 }

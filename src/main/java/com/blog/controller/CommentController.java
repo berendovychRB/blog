@@ -37,6 +37,8 @@ public class CommentController {
         model.addAttribute("user", user);
         model.addAttribute("post",post);
         model.addAttribute("comments", comments);
+        Integer likes = userService.countLikes(post);
+        model.addAttribute("likes", likes);
         return "comment";
     }
 

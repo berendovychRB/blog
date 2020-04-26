@@ -46,7 +46,9 @@
         <form:form action="/postDelete/${posts.id}" method="post">
         <button class="de dee" >Видалити</button>
         </form:form>
+        <a href="/editPost/${posts.id}">
         <button class="gA" style="margin-left: 80px;">Редагувати</button>
+        </a>
         <hr>
         </c:forEach>
     </div>
@@ -62,8 +64,10 @@
         <form:form action="/commentDelete/${comments.id}" method="post">
         <button class="de dee">Видалити</button>
         </form:form>
+        <a href="/editComment/${comments.id}">
         <button class="gA" style="margin-left: 80px;">Редагувати</button>
-        <hr>
+        </a>
+            <hr>
         </c:forEach>
     </div>
 </div>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
 import java.util.List;
@@ -31,5 +32,12 @@ public class PageController {
         model.addAttribute("user",user);
         return "page";
     }
+
+//    @PostMapping("/addToFriends/{id}")
+//    public String addToFriends(@PathVariable(name = "id")Long id){
+//        User user = userService.getOne(id);
+//        user.setFriended(userService.addToFriends(user));
+//        return "redirect:/page/" + id;
+//    }
 
 }

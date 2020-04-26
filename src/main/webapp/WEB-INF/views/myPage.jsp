@@ -26,6 +26,9 @@
             <a href="/editProfile">
             <button class="addToFriends activeButton focusOff">Редагувати профіль</button>
             </a>
+            <a href="/allMyPosts">
+                <button class="addToFriends activeButton focusOff">Редагувати пости</button>
+            </a>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
             <a href="/admin">
                 <button class="addToFriends activeButton focusOff">Керування</button>

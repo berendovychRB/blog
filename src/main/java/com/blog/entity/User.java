@@ -47,6 +47,12 @@ public class User {
     @ManyToMany(mappedBy = "liked", cascade = CascadeType.ALL)
     private List<Post> likedPosts;
 
+    @ManyToMany
+    private List<User> friended;
+
+    @ManyToMany(mappedBy = "friended", cascade = CascadeType.ALL)
+    private List<User> friends;
+
     public User() {
     }
 

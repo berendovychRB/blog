@@ -33,9 +33,14 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("user") UserDto userDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())return "registration";
-        userService.registration(userDto);
+    public String registration(@ModelAttribute("user") UserDto userDto) {
+        if (!userService.registrationValidation(userDto)) {
+            System.out.println("BAD DATA");
+            return "registration";
+        }
+        else {
+            userService.registration(userDto);
+        }
         return "redirect:/login";
     }
 

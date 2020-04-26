@@ -44,9 +44,16 @@ public class AdminController {
     }
 
     @PostMapping("/delete/{id}")
-    public String adminsButton(@PathVariable(name = "id") Long id){
-        userService.delete(id);
-        return "redirect:/admin";
+    public String userDelete(@PathVariable(name = "id") Long id) {
+        User user = userService.getCurrentUser();
+        if (user.getId().equals(id)) {
+            System.out.println("=========================");
+            System.out.println("You cant delete yourself");
+            System.out.println("=========================");
+        } else {
+            userService.delete(id);
+        }
+            return "redirect:/admin";
     }
 
     @PostMapping("/getAdmin/{id}")

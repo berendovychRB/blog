@@ -14,6 +14,8 @@ public interface UserService {
 
     User registration(UserDto userDto);
 
+    Boolean registrationValidation(UserDto userDto);
+
     List<User> getAll();
 
     User getCurrentUser();
@@ -29,5 +31,13 @@ public interface UserService {
     User giveAdmin(Long id);
 
     User giveUser(Long id);
+
+    List<User> addToFriends(User user);
+
+    List<User> getAllFriendsByUserId(User user);
+
+    List<User> deleteFromFriends(User user);
+
+    Integer countLikes(Post post);
 
 }

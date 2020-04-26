@@ -18,5 +18,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Integer countByPhone(String phone);
 
-    Long countUsersByPosts(Iterable<Post> posts);
+    List<User> getAllByFriended(User user);
+
+    Integer countUsersByPosts(Post post);
+
+    Integer countUsersByLikedPosts(Post post);
 }

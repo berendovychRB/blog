@@ -22,7 +22,9 @@
         </div>
     <div>
         <div class="pageMenu">
-            <button class="addToFriends activeButton focusOff">Додати в друзі</button>
+            <form:form action="/addToFriends/${user.id}" method="post">
+                <button class="addToFriends activeButton focusOff">Додати в друзі</button>
+            </form:form>
             <!--
         <div class="tagsMenu">
             <div class="n">

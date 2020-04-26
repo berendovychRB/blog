@@ -39,6 +39,7 @@
                         <button class="like focus focusOff">
                             <img src="../../resources/images/icons/heart.png" class="like" alt="">
                         </button>
+                            <p>${likes}</p>
                         <hr class="between">
                     </div>
                 </div>

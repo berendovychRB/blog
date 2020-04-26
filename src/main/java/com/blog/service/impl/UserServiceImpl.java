@@ -1,6 +1,7 @@
 package com.blog.service.impl;
 
 import com.blog.dto.UserDto;
+import com.blog.entity.Post;
 import com.blog.entity.Role;
 import com.blog.entity.User;
 import com.blog.repository.UserRepository;
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User registration(UserDto userDto) {
-        if (!registrationValidation(userDto)) throw new AccessDeniedException("Bad Data");
+
         User user = new User();
         user.setNickName(userDto.getLogin());
         user.setPassword(encoder.encode(userDto.getPassword()));
@@ -65,7 +66,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return repository.findAll();
     }
 
-
+    @Override
     public Boolean registrationValidation(UserDto userDto) {
         if (!userDto.getEmail().contains("@")) return false;
         if (!userDto.getPassword().equals(userDto.getPasswordRepeat())) return false;
@@ -142,6 +143,46 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         User user = getOne(id);
         user.setRole(Role.USER);
         return save(user);
+    }
+
+    @Override
+    public Integer countLikes(Post post) {
+        Integer likes = repository.countUsersByLikedPosts(post);
+        return likes;
+    }
+
+    @Override
+    public List<User> deleteFromFriends(User user) {
+        List<User> friends = user.getFriended();
+        User currentUser = getCurrentUser();
+        friends.remove(currentUser);
+        save(currentUser);
+        currentUser.getFriends().add(user);
+        return friends;
+    }
+
+    @Override
+    public List<User> getAllFriendsByUserId(User user) {
+        List<User> friends = repository.getAllByFriended(user);
+        return friends;
+    }
+
+    @Override
+    public List<User> addToFriends(User user) {
+        List<User> friends = user.getFriended();
+        User currentUser = getCurrentUser();
+        if (friends.contains(currentUser)){
+            friends.remove(currentUser);
+            save(currentUser);
+            currentUser.getFriends().add(user);
+        }else {
+            friends.add(currentUser);
+            save(currentUser);
+            currentUser.getFriends().add(user);
+        }
+        return friends;
+
+
     }
 
 }

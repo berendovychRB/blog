@@ -1,7 +1,9 @@
 package com.blog.controller;
 
+import com.blog.entity.Comment;
 import com.blog.entity.Post;
 import com.blog.entity.User;
+import com.blog.service.CommentService;
 import com.blog.service.PostService;
 import com.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class PostController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/")
     public String greeting(Model model) {

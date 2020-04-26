@@ -1,6 +1,7 @@
 package com.blog.service.impl;
 
 import com.blog.entity.Comment;
+import com.blog.entity.Post;
 import com.blog.repository.CommentRepository;
 import com.blog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Comment save(Comment comment) {
         return repository.save(comment);
+    }
+
+    @Override
+    public Comment getOne(Long id) {
+        return repository.getOne(id);
     }
 
     @Override
