@@ -24,6 +24,9 @@ public class SearchController {
     @PostMapping("/search")
     public String searchUser(@RequestParam String nickName, Model model){
         User user = userService.getByNickName(nickName);
+        if(user != null){
         return "redirect:/page/" + user.getId();
+        }
+        return "pageNotFound";
     }
 }
